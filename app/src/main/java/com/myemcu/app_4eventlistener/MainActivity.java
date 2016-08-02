@@ -14,18 +14,35 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //-内部类(颜色)------------------------------------------------------------------------------
+
         // 获取Button对象
         Button red =    (Button)   findViewById(R.id.red);
         Button green =  (Button)   findViewById(R.id.green);
         Button blue  =  (Button)   findViewById(R.id.blue);
 
-        // 创建监听器对象
+        // 创建监听器对象(颜色监听器)
         ColorListener myColorListener = new ColorListener();    // (Alt+Enter->Create inner class)
 
         // 注册监听器对象
         red.setOnClickListener(myColorListener);                // (Alt+Enter->implements)
         green.setOnClickListener(myColorListener);
         blue.setOnClickListener(myColorListener);
+
+        //-外部类(大小)------------------------------------------------------------------------------
+
+        // 获取对象
+        Button bigger =  (Button) findViewById(R.id.bigger);
+        Button smaller = (Button) findViewById(R.id.smaller);
+
+        TextView txt = (TextView) findViewById(R.id.txt);
+
+        // 创建监听器(尺寸监听器)(外部类需要传入参数)
+        SizeListener mySizeListener = new SizeListener(txt);   // (Alt+Enter->Create class)(即:外部类)
+
+        // 注册监听器
+        bigger.setOnClickListener(mySizeListener);          // // (Alt+Enter->implements)
+        smaller.setOnClickListener(mySizeListener);
     }
 
     private class ColorListener implements View.OnClickListener {
