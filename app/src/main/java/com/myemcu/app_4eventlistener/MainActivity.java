@@ -4,14 +4,17 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private TextView txt;
     private int flag=0;
+    private EditText content;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         bigger.setOnClickListener(mySizeListener);          // // (Alt+Enter->implements)
         smaller.setOnClickListener(mySizeListener);
 
-        //-类自身------------------------------------------------------------------------------------
+        //-自身类------------------------------------------------------------------------------------
 
         //txt.setTypeface(Typeface.DEFAULT);  // 设置字体样式
 
@@ -62,6 +65,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         bold.setOnClickListener(this);  // Alt+Enter->implements
         italic.setOnClickListener(this);
         normal.setOnClickListener(this);
+
+        //-匿名类------------------------------------------------------------------------------------
+
+        content = (EditText) findViewById(R.id.content);
+        content.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                txt.setText(content.getText().toString());  // 输入完成后按"回车"。
+                return false;
+            }
+        });
     }
 
     @Override
