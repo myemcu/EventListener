@@ -52,9 +52,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         bigger.setOnClickListener(mySizeListener);          // // (Alt+Enter->implements)
         smaller.setOnClickListener(mySizeListener);
 
-        //-自身类------------------------------------------------------------------------------------
-
-        //txt.setTypeface(Typeface.DEFAULT);  // 设置字体样式
+        //-自身类(样式)------------------------------------------------------------------------------
 
         // 获取对象
         Button bold   =   (Button)  findViewById(R.id.bold);
@@ -66,7 +64,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         italic.setOnClickListener(this);
         normal.setOnClickListener(this);
 
-        //-匿名类------------------------------------------------------------------------------------
+        //-匿名类(录入文本并显示)---------------------------------------------------------------------
 
         content = (EditText) findViewById(R.id.content);
         content.setOnEditorActionListener(new TextView.OnEditorActionListener() {
